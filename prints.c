@@ -4,7 +4,6 @@
 /**
  * prints - prints a string
  * @val: str
- * 
  * Return: num
  */
 
@@ -33,6 +32,6 @@ int prints(va_list val)
 		{
 			_putchar(str[i]);
 		}
-		return (len);	
+		return (len);
 	}
 }
