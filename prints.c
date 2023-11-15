@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdlib.h>
 
 /**
  * prints - prints a string
@@ -12,7 +13,7 @@ int prints(va_list val)
 	char *str;
 	int len, i;
 
-	str = va_args(val, char *);
+	str = va_arg(val, char *);
 
 	if (str == NULL)
 	{

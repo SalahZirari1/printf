@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdarg.h>
 
 /**
  * _printf - mimics printf
@@ -9,14 +10,44 @@
 
 int _printf(const char *format, ...)
 {
-	int c;
+	va_list args;
+	int count;
 
-	c = 0;
+	count = 0;
+
 	while (*format != '\0')
 	{
-		_putchar(*format);
+		if (*format == '%' && *(format + 1) != '\0')
+		{
+			format++;
+			switch (*format)
+			{
+				case 'c':
+					count += printc(args);
+					break;
+				case 's':
+					count += prints(args);
+					break;
+				case '%':
+					count += printp();
+					break;
+				default:
+					_putchar('%');
+					count++;
+					break;
+
+			}
+		}
+		else
+		{
+			_putchar(*format);
+			count++;
+		}
+
 		format++;
-		c++;
 	}
-	return (c);
+
+	va_end(args);
+
+	return (count);
 }
